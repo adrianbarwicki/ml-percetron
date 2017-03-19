@@ -8,14 +8,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/adrianbarwicki/ml-percetron.git"
+    "url": "git+https://github.com/adrianbarwicki/ml-perceptron.git"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "Adrian Barwicki (adrianbarwicki@gmail.com)",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/adrianbarwicki/ml-percetron/issues"
   },
-  "homepage": "https://github.com/adrianbarwicki/ml-percetron#readme",
+  "homepage": "https://github.com/adrianbarwicki/ml-perceptron#readme",
   "dependencies": {
     "linear-algebra": "^3.1.3"
   }
