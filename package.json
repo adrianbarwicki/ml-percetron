@@ -1,0 +1,22 @@
+{
+  "name": "ml-percetron",
+  "version": "1.0.0",
+  "description": "Training and fitting models with Rosenblatt's perceptron rule",
+  "main": "perceptron.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/adrianbarwicki/ml-percetron.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/adrianbarwicki/ml-percetron/issues"
+  },
+  "homepage": "https://github.com/adrianbarwicki/ml-percetron#readme",
+  "dependencies": {
+    "linear-algebra": "^3.1.3"
+  }
+}
