@@ -20,7 +20,15 @@ class Perceptron {
 
         // we use a sigmoid function
         // @todo: is sigmoid function the right choice for the default activation rule?
-        this.activationRule = value => 1 / Math.pow(2,71828, -1 * value);
+        this.activationRule = value => {
+            return value > 0 ? 1 : 0;
+            /*
+            const exp = Math.pow(2.71828, -1 * value);
+            const y = 1 / (1 + exp);
+
+            return y;
+            */
+        };
     }
 
     // Private
@@ -59,7 +67,7 @@ class Perceptron {
                 prediction = this.predict(X[j]);
 
                 const newWeights = [];
-                const residual = prediction - y[j];
+                const residual = y[j] - prediction;
 
                 this.weights.data[0].forEach((weight, index) => {
                     newWeights.push(
