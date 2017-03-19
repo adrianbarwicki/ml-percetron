@@ -1,4 +1,6 @@
-const la = require('linear-algebra');
+"use strict";
+
+const la = require('linear-algebra')();
 
 class Perceptron {
     constructor() {
@@ -8,7 +10,7 @@ class Perceptron {
         this.learningRate = 0.01;
 
         // Number of iteration for data fitting
-        this.iterationNo = 10;
+        this.iterationNo = 100;
 
         // Weights after fitting. 1-d array
         this.weights = [];
@@ -18,14 +20,16 @@ class Perceptron {
 
         // we use a sigmoid function
         // @todo: is sigmoid function the right choice for the default activation rule?
-        this.acticationRule = value => 1 / Math.pow(2,71828, -1 * value);
+        this.activationRule = value => 1 / Math.pow(2,71828, -1 * value);
     }
 
     // Private
     _getOutput(Xrow) {
-        currentVector = new la.Vector(Xrow);
+        const output = Xrow.reduce( (total, currentValue, currentIndex) => {
+            return total + this.weights.data[0][currentIndex] * currentValue;
+        }, 0);
 
-        output = this.weights.trans().dot(currentVector);
+        return output;
     }
 
     _getNewWeight(prediction, trueValue, arg) {
@@ -38,12 +42,13 @@ class Perceptron {
     }
 
     predict(Xrow) {
-        return this.activationRule(_getOutput(X[j]));
+        return this.activationRule(this._getOutput(Xrow));
     }
 
     train (X, y) {
         if (!this.weights.length) {
-            this.weights = new la.Vector(this.sampleDim);
+            this.sampleDim = X.length;
+            this.weights = la.Matrix.zero(1, this.sampleDim);
         }
 
         const noOfTrainingSets = X.length;
@@ -51,8 +56,7 @@ class Perceptron {
 
         for (let i = 0; i < this.iterationNo; i++){
             for (let j = 0; j < noOfTrainingSets; j++){
-                output = _getOutput(X[j]);
-                prediction = predict(output);
+                prediction = this.predict(X[j]);
 
                 const newWeights = [];
                 const residual = prediction - y[j];
@@ -63,8 +67,10 @@ class Perceptron {
                     );
                 });
 
-                this.weights = new la.Vector(newWeights);
+                this.weights = new la.Matrix(newWeights);
             }
         }
     }
-} 
+}
+
+module.exports = Perceptron;
