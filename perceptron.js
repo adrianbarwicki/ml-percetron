@@ -62,7 +62,7 @@ class Perceptron {
         const noOfTrainingSets = X.length;
         let currentVector, output, prediction;
 
-        for (let i = 0; i < this.iterationNo; i++){
+        for (let i = 0; i < this.iterationNo; i++) {
             for (let j = 0; j < noOfTrainingSets; j++){
                 prediction = this.predict(X[j]);
 
