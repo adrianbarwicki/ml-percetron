@@ -22,3 +22,13 @@ p.predict([ 1, 1, 1 ]);
 p.predict([ 0, 0, 0 ]);
 // 0
 ```
+
+You can also set a custom activation function, example: sigmoid function:
+```
+p.setActivationFn(value => {
+    const exp = Math.pow(2.71828, -1 * value);
+    const y = 1 / (1 + exp);
+
+    return y;
+)}
+```
